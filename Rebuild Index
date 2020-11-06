@@ -1,0 +1,10 @@
+Rebuild Index Programattically
+
+
+REBUILD INDEX 
+------------------------------------------
+
+ExamineManager.Instance.IndexProviderCollection.ToList().ForEach(index => index.RebuildIndex());
+
+var indexName = "SiteContentIndexer";
+ExamineManager.Instance.IndexProviderCollection\[indexName\].RebuildIndex());
