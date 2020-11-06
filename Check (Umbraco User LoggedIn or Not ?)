@@ -1,0 +1,14 @@
+Check if Umbraco Backend User Is LoggedIn Or Not - V8
+
+
+    
+using Umbraco.Core.Security;
+using Umbraco.Web.Security;
+
+
+ HttpContextBase wrapper = new HttpContextWrapper(HttpContext.Current);
+    UmbracoBackOfficeIdentity user = wrapper.GetCurrentIdentity(true);
+    bool isLoggedIn = user != null;
+    if(isLoggedIn==false){
+   /// not logged in
+    }
