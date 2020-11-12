@@ -1,0 +1,103 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin;
+using Owin;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Umbraco.Core.Models.Identity;
+using Umbraco.Core.Security;
+using Umbraco.Web;
+using Umbraco.Web.Security;
+using Owin;
+using Microsoft.Owin;
+using System.Globalization;
+using Microsoft.Owin.Security.OpenIdConnect;
+using System.Configuration;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using System.Security.Claims;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.Notifications;
+
+[assembly: OwinStartup("CustomOwinStartup", typeof(CustomOwinStartup))]
+namespace UmbBackoffice.Azure.Ad.App_Start
+{
+    public class CustomOwinStartup : UmbracoDefaultOwinStartup
+    {
+        public override void Configuration(IAppBuilder app)
+        {
+
+            base.Configuration(app);
+
+            ConfigureAzureActiveDirectory(app);
+        }
+
+        private void ConfigureAzureActiveDirectory(IAppBuilder app)
+        {
+            //app.UseExternalSignInCookie(Umbraco.Core.Constants.Security.BackOfficeExternalAuthenticationType);
+            var tenantId = ConfigurationManager.AppSettings["azureAd:tenantId"];
+            var clientId = ConfigurationManager.AppSettings["azureAd:clientId"];
+            var postLoginRedirectUri = ConfigurationManager.AppSettings["azureAd:redirectUrl"];
+            var postLogoutRedirectUri = ConfigurationManager.AppSettings["azureAd:logoutUrl"];
+            string caption = "Active Directory";
+            string style = "btn-microsoft";
+            string icon = "fa-windows";
+            var authority = string.Format(
+                CultureInfo.InvariantCulture,
+                "https://login.windows.net/{0}",
+                tenantId);
+
+
+            var adOptions = new OpenIdConnectAuthenticationOptions
+            {
+                SignInAsAuthenticationType = Umbraco.Core.Constants.Security.BackOfficeExternalAuthenticationType,
+                ClientId = clientId,
+                Authority = authority,
+                RedirectUri = postLoginRedirectUri,
+                PostLogoutRedirectUri = postLogoutRedirectUri,
+                ResponseType = OpenIdConnectResponseType.IdToken,
+
+            };
+            adOptions.Notifications = new OpenIdConnectAuthenticationNotifications()
+            {
+
+               
+             
+            };
+            adOptions.ForUmbracoBackOffice(style, icon);
+            adOptions.Caption = caption;
+            //Need to set the auth tyep as the issuer path
+            adOptions.AuthenticationType = string.Format(
+                CultureInfo.InvariantCulture,
+                "https://sts.windows.net/{0}/",
+                 new Guid(tenantId));
+
+            //adOptions.SetExternalSignInAutoLinkOptions(new ExternalSignInAutoLinkOptions(autoLinkExternalAccount: true));
+            var autoLinkOptions = new ExternalSignInAutoLinkOptions(
+                         autoLinkExternalAccount: true,
+                     defaultUserGroups: new string[] { "editor" },
+                        defaultCulture: "en-US")
+            {
+
+                // an optional callback you can specify to give you more control over how the
+                // backoffice user is created (auto-linked)
+                OnAutoLinking = (BackOfficeIdentityUser user, ExternalLoginInfo info) =>
+                {
+
+                    var str = user;
+                    var info1 = info;
+                    // this callback will execute when the user is being auto-linked but before it is created
+                    // so you can modify the user before it's persisted
+                }
+
+            };
+
+            adOptions.SetExternalSignInAutoLinkOptions(autoLinkOptions);
+            app.UseOpenIdConnectAuthentication(adOptions);
+        }
+
+       
+    }
+}
