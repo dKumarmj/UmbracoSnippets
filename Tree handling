@@ -1,0 +1,30 @@
+ public class Component : IComponent
+    {
+        // initialize: runs once when Umbraco starts
+        public void Initialize()
+        {
+           
+            Umbraco.Web.Trees.TreeControllerBase.TreeNodesRendering += TreeControllerBase_TreeNodesRendering;
+
+        }
+
+      
+
+        void TreeControllerBase_TreeNodesRendering(Umbraco.Web.Trees.TreeControllerBase sender, Umbraco.Web.Trees.TreeNodesRenderingEventArgs e)
+        {
+            // this example will filter any content tree node whose node name starts with
+
+            // 'Private', for any user that is in the customUserGroup
+            if (sender.TreeAlias == "content"
+                && sender.Security.CurrentUser.Groups.Any(f => f.Alias == "customUserGroupAlias"))
+            {
+                e.Nodes.RemoveAll(node => node.Name.StartsWith("Private"));
+            }
+        }
+       
+        public void Terminate()
+        {
+            // unsubscribe on shutdown
+            Umbraco.Web.Trees.TreeControllerBase.TreeNodesRendering += TreeControllerBase_TreeNodesRendering;
+        }
+    }
