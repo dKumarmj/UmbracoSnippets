@@ -1,0 +1,48 @@
+RETURN VIEWMODEL AS ASYNC
+
+
+With a specific context, here umbraco context
+==================================================
+
+Task<CustomViewModel> customPageModel = Task<CustomViewModel>.Factory.StartNew(() =>
+            {
+               
+
+                using (var context = _context.EnsureUmbracoContext())
+                {
+                    var registerPage = context.UmbracoContext.Content.GetById(Convert.ToInt32(pageId));
+                    return new CustomViewModel
+                    {
+                      Id=1,
+                      Name="Dhanesh Kumar Mj"
+                    }
+                }
+             }
+
+   //return model
+   var model= await customPageModel;
+   
+   
+Normal
+==================================================
+
+Task<CustomViewModel> customPageModel = Task<CustomViewModel>.Factory.StartNew(() =>
+            {
+               
+
+                using (var context = _context.EnsureUmbracoContext())
+                {
+                    var registerPage = context.UmbracoContext.Content.GetById(Convert.ToInt32(pageId));
+                    return new CustomViewModel
+                    {
+                      Id=1,
+                      Name="Dhanesh Kumar Mj"
+                    }
+                }
+             }
+
+   //return model
+   var model= await customPageModel;
+   
+   
+   
