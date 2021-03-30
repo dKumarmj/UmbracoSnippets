@@ -28,3 +28,6 @@ var toSearchForm = searchTerm.Split(' ');
                                                                             orderby r.Score descending
                                                                             select new Node(r.Id));
                 }
+
+
+Search Reference :: https://skrift.io/issues/examine-in-umbraco-8/
