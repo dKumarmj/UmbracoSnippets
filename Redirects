@@ -1,0 +1,67 @@
+Common rules
+This is a collection of common rules that we are either using on elmah.io or I have used in the past.
+
+Redirect to HTTPS
+<rule name="RedirectToHTTPS" stopProcessing="true">
+  <match url="(.*)" />
+  <conditions>
+    <add input="{HTTPS}" pattern="off" ignoreCase="true" />
+  </conditions>
+  <action type="Redirect" url="https://{SERVER_NAME}/{R:1}" redirectType="Permanent" />
+</rule>
+
+Redirect www to non-www
+<rule name="RedirectWwwToNonWww" stopProcessing="false">
+  <match url="(.*)" />
+  <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+    <add input="{HTTP_HOST}" pattern="^(www\.)(.*)$" />
+  </conditions>
+  <action type="Redirect" url="https://{C:2}{REQUEST_URI}" redirectType="Permanent" />
+</rule>
+
+Redirect non-www to www
+<rule name="RedirectNonWwwToWww" stopProcessing="true">
+  <match url="(.*)" />
+  <conditions>
+    <add input="{HTTP_HOST}" pattern="^domain.com$" />
+  </conditions>
+  <action type="Redirect" url="http://www.domain.com/{R:0}" redirectType="Permanent" />
+</rule>
+
+Reverse proxy
+In this example, I'm using rewrite rules to serve a blog hosted on GitHub but through a custom domain name. By using the Rewrite action type, the URL stays the same, even though the content is served from elmahio.github.io.
+
+<rule name="ReverseProxy" stopProcessing="true">
+  <match url="(.*)" />
+  <conditions logicalGrouping="MatchAll">
+    <add input="{REQUEST_URI}" negate="true" pattern="^(.*)/.well-known/(.*)$"/>
+  </conditions>
+  <action type="Rewrite" url="http://elmahio.github.io/blog/{R:1}" />
+</rule>
+
+Rewrite all but elmah.axd
+<rule name="RewriteAllButElmahAxd" stopProcessing="true">
+  <match url="(.*)" />
+  <conditions>
+    <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+    <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+    <add input="{URL}" negate="true" pattern="\elmah.axd$" />
+  </conditions>
+  <action type="Rewrite" url="http://elmahio.github.io/blog/{R:1}" />
+</rule> 
+
+Add trailing slash
+<rule name="AddTrailingSlash" stopProcessing="true">
+  <match url="(.*[^/])$" />
+  <conditions>
+    <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+    <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+  </conditions>
+  <action type="Redirect" url="{R:1}/" redirectType="Permanent" />
+</rule>
+
+Lowercase all URLs
+<rule name="LowercaseAllUrls" stopProcessing="true">
+  <match url=".*[A-Z].*" ignoreCase="false" />
+  <action type="Redirect" url="{ToLower:{R:0}}" />
+</rule>
