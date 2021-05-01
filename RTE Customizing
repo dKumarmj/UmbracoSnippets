@@ -1,0 +1,19 @@
+Once the tinyMceConfig.config file has changed a little bit, I have done some changes on the commands code, as per the plugins available in :
+
+Text Color Plugin which provides specific And also colorpicker which enables users to pick any color they want
+
+Fullpage which provides multiple features such as font size and font family
+
+Follow the below steps to add those features is :
+
+Go to tinyMceConfig.config file, and between the commands tag add the below code :
+ <command alias="forecolor" name="Change Color" mode="Selection" />
+ <command alias="fontselect" name="Change Font Family" mode="Selection" />
+ <command alias="fontsizeselect" name="Change Font Size" mode="Selection" />
+Add the below code between plugins tag
+<plugin>textcolor</plugin>
+<plugin>colorpicker</plugin>
+<plugin>fullpage</plugin>
+Now from Umbraco - settings - datatypes - richtext editor, add the new properties, and do the same to the richtext editor property from its Document type
+
+=======================================================================================
