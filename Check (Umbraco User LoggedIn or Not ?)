@@ -12,3 +12,19 @@ using Umbraco.Web.Security;
     if(isLoggedIn==false){
    /// not logged in
     }
+
+
+
+///////////////////////222222222222222222
+
+
+
+        var currentAuthTicket = new HttpContextWrapper(HttpContext.Current).GetUmbracoAuthTicket();
+        if (currentAuthTicket != null)
+        {
+            var remainingSeconds = currentAuthTicket.GetRemainingAuthSeconds();
+            if (remainingSeconds <= 2)
+            {
+                HttpContext.Current.Response.Redirect("/umbraco");
+            }
+        }
