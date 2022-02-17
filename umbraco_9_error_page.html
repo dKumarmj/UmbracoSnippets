@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" as="style" href="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/css">
+    <link href="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/DependencyHandler.axd" type="text/css" rel="stylesheet">
+    <link href="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/ig-theme-bMzZwIjnnUCO6FCFetf95w.css" async="" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" async="" href="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/custom.css">
+    
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Friendly Error Pages in Umbraco 9 | Poornima Nayar - Freelance Developer</title>
+<meta name="description" content="This article looks at how to set up friendly 404 and 500 error pages in Umbraco 9.">
+
+<meta property="og:title" content="Friendly Error Pages in Umbraco 9 | Poornima Nayar - Freelance Developer">
+<meta property="og:type" content="website">
+<meta property="og:description" content="This article looks at how to set up friendly 404 and 500 error pages in Umbraco 9.">
+<meta property="og:url" content="https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/">
+<meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:site" content="@poornimanayar">
+    
+<meta name="twitter:title" content="Friendly Error Pages in Umbraco 9 | Poornima Nayar - Freelance Developer">
+<meta name="twitter:description" content="This article looks at how to set up friendly 404 and 500 error pages in Umbraco 9.">
+
+    <meta property="og:image" content="https://poornimanayar.co.uk/media/3k4fd3ml/cat.jpg?upscale=false&amp;width=1200">
+    <meta name="twitter:image" content="https://poornimanayar.co.uk/media/3k4fd3ml/cat.jpg?upscale=false&amp;width=1200">
+
+    <meta name="og:site_name" content="Poornima Nayar - Freelance Developer">
+
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=57&amp;height=57&amp;rnd=132578084795330000">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=60&amp;height=60&amp;rnd=132578084795330000">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=72&amp;height=72&amp;rnd=132578084795330000">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=76&amp;height=76&amp;rnd=132578084795330000">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=114&amp;height=114&amp;rnd=132578084795330000">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=120&amp;height=120&amp;rnd=132578084795330000">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=144&amp;height=144&amp;rnd=132578084795330000">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=152&amp;height=152&amp;rnd=132578084795330000">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=180&amp;height=180&amp;rnd=132578084795330000">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=192&amp;height=192&amp;rnd=132578084795330000">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=32&amp;height=32&amp;rnd=132578084795330000">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=96&amp;height=96&amp;rnd=132578084795330000">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://poornimanayar.co.uk/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=16&amp;height=16&amp;rnd=132578084795330000">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/media/c2zeb2i3/favicon-base-260x260.png?anchor=center&amp;mode=crop&amp;width=144&amp;height=144&amp;rnd=132578084795330000">
+
+
+
+
+<script async="" src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/gtm.js.download"></script><script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MLW9HM');
+</script>
+
+    <script>window.MSInputMethodContext && document.documentMode && document.write('<script src="/scripts/lib/ie11CustomProperties.js"><\x2fscript>');</script>
+    
+    <link rel="stylesheet" href="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/prism.css"><script>!function(){var u='/umbraco/umarketingsuite/pagedata/ping';if(typeof navigator.sendBeacon=='function')navigator.sendBeacon(u);else{var x=new XMLHttpRequest;x.open('POST',u,!0);x.send()}}()</script>
+
+<script src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/clipboard.min.js.download"></script><style>.fluidvids {width: 100%; max-width: 100%; position: relative;}.fluidvids-item {position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;}</style><style type="text/css">
+:root .top.ad,
+:root #content > #center > .dose > .dosesingle,
+:root #content > #right > .dose > .dosesingle
+{ display: none !important; }</style></head>
+<body class="windows browser-chrome browser-version-98 no-touch page-loaded" data-siteid="1327" data-culture="en-US" data-new-gr-c-s-check-loaded="14.1050.0" data-gr-ext-installed="">
+    
+    <script src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/prism.js.download"></script>
+
+    <a href="https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/#content" class="button skip-link">Jump to content</a>
+
+
+<header class="top top--light top--full-width  top--navigation-center">
+	<div class="top-inner">
+	    
+	    <div class="top__left">
+    		<a href="https://poornimanayar.co.uk/" class="logo logo--on-light" title="Poornima Nayar - Freelance Developer">
+    			<img src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/logo.png" alt="Poornima Nayar - Freelance Developer">
+    		</a>
+    		<a href="https://poornimanayar.co.uk/" class="logo logo--on-dark" title="Poornima Nayar - Freelance Developer">
+    			<img src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/logo.png" alt="Poornima Nayar - Freelance Developer">
+    		</a>
+		</div>
+
+		
+<div class="top__middle">
+    <nav class="main-nav main-nav--main">
+        <ul class="main-nav__ul main-nav__ul--first">
+                            <li class="main-nav__li main-nav__li--contact">
+                    <a href="mailto:poornimanayar@kvtechsltd.co.uk" class="main-nav__a">
+                        <i class="fa fa-envelope" aria-hidden="true"></i> poornimanayar@kvtechsltd.co.uk
+                    </a>
+                </li>
+
+                    <li class="main-nav__li">
+                            <a class="main-nav__a" href="https://poornimanayar.co.uk/about-me/">About Me</a>
+                    </li>
+                    <li class="main-nav__li selected">
+                            <a class="main-nav__a" href="https://poornimanayar.co.uk/blog/">Blog</a>
+                    </li>
+                    <li class="main-nav__li">
+                            <a class="main-nav__a" href="https://poornimanayar.co.uk/music/">Music</a>
+                    </li>
+                    <li class="main-nav__li">
+                            <a class="main-nav__a" href="https://poornimanayar.co.uk/community/">Community <i class="fa fa-chevron-down" aria-hidden="true"></i><button class="expand" tabindex="0" aria-label="Show Subpages"><i class="fa fa-plus" aria-hidden="true"></i></button></a>
+                            <ul class="main-nav__ul main-nav__ul--second">
+                                    <li class="main-nav__li">
+                                            <a class="main-nav__a" href="https://poornimanayar.co.uk/community/resources-for-my-talk-about-maui-and-umbraco-9/">Resources for my talk about MAUI and Umbraco 9</a>
+
+                                    </li>
+                            </ul>
+                    </li>
+                    <li class="main-nav__li">
+                            <a class="main-nav__a" href="https://poornimanayar.co.uk/article-series/">Article Series</a>
+                    </li>
+
+
+            
+
+            
+
+        </ul>
+
+    </nav>
+</div>
+
+<div class="top__right hide--m">
+    <nav class="main-nav main-nav--side">
+        <ul class="main-nav__ul main-nav__ul--first">
+                <li class="main-nav__li toggle-search">
+                    <a class="main-nav__a" href="https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/#" title="Search" aria-label="search">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </a>
+                </li>
+
+            
+
+            
+        </ul>
+
+    </nav>
+</div>
+
+
+
+
+
+		
+		<nav class="mobile-actions">
+			<ul>
+    				<li class="toggle-search">
+    				    <a href="https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/#" title="Search">
+    				        <i class="fa fa-search" aria-hidden="true"></i>
+    				    </a>
+    				</li>
+				<li>
+				    <button class="hamburger" type="button" aria-label="Show navigation">
+            		  <span class="hamburger-box">
+            		    <span class="hamburger-inner"></span>
+            		  </span>
+            		</button>
+				</li>
+			</ul>
+		</nav>
+		
+		
+	</div>
+</header>
+
+    <main id="content">
+        
+
+<section class="block post white-bg in-view">
+
+    <div class="block__header">
+        <h1>Friendly Error Pages in Umbraco 9</h1>
+        <div class="post__header">
+            <div class="post__meta">
+     16 February 2022
+</div>              </div>
+<div class="block__header-text">
+    <p>In this article, we will look at how to set up friendly error pages in Umbraco 9.</p>
+</div>    </div>
+
+    <div class="block__body">
+
+<div class="post__image">
+
+    <img class="lazyautosizes lazyloaded" src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/cat.jpg" data-sizes="auto" data-srcset="/media/3k4fd3ml/cat.jpg?upscale=false&amp;width=480 480w,
+                	/media/3k4fd3ml/cat.jpg?upscale=false&amp;width=768 768w,
+                	/media/3k4fd3ml/cat.jpg?upscale=false&amp;width=1100 1100w" alt="Friendly Error Pages in Umbraco 9" sizes="1100px" srcset="/media/3k4fd3ml/cat.jpg?upscale=false&amp;width=480 480w,
+                	/media/3k4fd3ml/cat.jpg?upscale=false&amp;width=768 768w,
+                	/media/3k4fd3ml/cat.jpg?upscale=false&amp;width=1100 1100w">
+</div>
+        <div class="post__body">
+
+            
+
+<div class="row sub-grid">
+
+<div class="col-100 col-s-100">
+
+
+<div class="grid-item grid-item--text ">
+    <h2>Page Not Found - 404 Error Page</h2>
+<p>In Version 8 and previous versions of Umbraco, the simplest way to set up a 404 page was to add it to the <code>umbracoSettings.config</code> file as shown <a rel="noopener" href="https://our.umbraco.com/documentation/reference/config/umbracosettings/#specify-the-node-where-the-page-should-be-displayed-when-theres-an-exception" target="_blank" data-anchor="#specify-the-node-where-the-page-should-be-displayed-when-theres-an-exception">here</a>. When it comes to Umbraco 9, this config file no longer exists. As a matter of fact, all the XML-based config files have been replaced by JSON-based <code>appsettings.json</code> file, embracing the <a rel="noopener" href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&amp;WT.mc_id=DT-MVP-5004155" target="_blank" data-anchor="?view=aspnetcore-5.0&amp;WT.mc_id=DT-MVP-5004155">ASP.NET Core configuration</a>. To set up 404 error pages in Umbraco, you can make use of the <code>Error404Collection</code> section in <code>appsettings.json</code>. This is added to the <code>Content</code> subsection as shown below. I am using the <code>ContentKey</code> here but <code>ContentId</code> or <code>ContentXPath</code> can also be used instead of the key.</p>
+<div class="code-toolbar"><pre class=" language-json"><code class=" language-json"><span class="token property">"Error404Collection"</span><span class="token operator">:</span><span class="token space"> </span><span class="token punctuation">[</span><span class="token lf">
+</span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token property">"Culture"</span><span class="token operator">:</span><span class="token space"> </span><span class="token string">"default"</span><span class="token punctuation">,</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token property">"ContentKey"</span><span class="token operator">:</span><span class="token space"> </span><span class="token string">"abd58ca0-c700-47f3-b7ab-6672583572ce"</span><span class="token lf">
+</span><span class="token space"> </span><span class="token punctuation">}</span><span class="token lf">
+</span><span class="token punctuation">]</span></code></pre><div class="toolbar"><div class="toolbar-item"><span>JSON</span></div><div class="toolbar-item"><button type="button">Copy</button></div></div></div>
+<p>If you have language variants and wish to have a 404 page per language culture, you can specify the page per culture as shown below.&nbsp;</p>
+<div class="code-toolbar"><pre class=" language-json"><code class=" language-json"><span class="token property">"Error404Collection"</span><span class="token operator">:</span><span class="token space"> </span><span class="token punctuation">[</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token property">"Culture"</span><span class="token operator">:</span><span class="token space"> </span><span class="token string">"default"</span><span class="token punctuation">,</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token property">"ContentKey"</span><span class="token operator">:</span><span class="token space"> </span><span class="token string">"abd58ca0-c700-47f3-b7ab-6672583572ce"</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token property">"Culture"</span><span class="token operator">:</span><span class="token space"> </span><span class="token string">"en-gb"</span><span class="token punctuation">,</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token property">"ContentKey"</span><span class="token operator">:</span><span class="token space"> </span><span class="token string">"b35174d1-2be3-47df-b42d-e00a7ee27e43"</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">}</span><span class="token lf">
+</span><span class="token punctuation">]</span></code></pre><div class="toolbar"><div class="toolbar-item"><span>JSON</span></div><div class="toolbar-item"><button type="button">Copy</button></div></div></div>
+<p>If you have language variants and a 404 page per culture is not specified, it falls back to the 404 page marked for the <em><strong>default</strong> </em>culture.&nbsp;</p>
+<p>You can also approach 404 pages programmatically, which can be helpful in many cases. This is done by customising the inbound pipeline in Umbraco using an <code>IContentFinder</code>, more specifically <code>IContentLastChanceFinder</code>. The <code>IContentLastChanceFinder</code> always returns a 404 status code.&nbsp;</p>
+<p>To achieve this, we first need to create a new implementation of the <code>IContentLastChanceFinder</code> and return a boolean based on whether the custom 404 page was found or not.&nbsp;</p>
+<div class="code-toolbar"><pre class=" language-csharp"><code class=" language-csharp"><span class="token keyword keyword-public">public</span><span class="token space"> </span><span class="token keyword keyword-class">class</span><span class="token space"> </span><span class="token class-name">PageNotFoundContentFinder</span><span class="token space"> </span><span class="token punctuation">:</span><span class="token space"> </span><span class="token type-list"><span class="token class-name">IContentLastChanceFinder</span></span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-private">private</span><span class="token space"> </span><span class="token keyword keyword-readonly">readonly</span><span class="token space"> </span><span class="token class-name">IDomainService</span><span class="token space"> </span>_domainService<span class="token punctuation">;</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-private">private</span><span class="token space"> </span><span class="token keyword keyword-readonly">readonly</span><span class="token space"> </span><span class="token class-name">IUmbracoContextAccessor</span><span class="token space"> </span>_umbracoContextAccessor<span class="token punctuation">;</span><span class="token lf">
+</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-public">public</span><span class="token space"> </span><span class="token function">PageNotFoundContentFinder</span><span class="token punctuation">(</span><span class="token class-name">IDomainService</span><span class="token space"> </span>domainService<span class="token punctuation">,</span><span class="token space"> </span><span class="token class-name">IUmbracoContextAccessor</span><span class="token space"> </span>umbracoContextAccessor<span class="token punctuation">)</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span>_domainService<span class="token space"> </span><span class="token operator">=</span><span class="token space"> </span>domainService<span class="token punctuation">;</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span>_umbracoContextAccessor<span class="token space"> </span><span class="token operator">=</span><span class="token space"> </span>umbracoContextAccessor<span class="token punctuation">;</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">}</span><span class="token lf">
+</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-public">public</span><span class="token space"> </span><span class="token return-type class-name"><span class="token keyword keyword-bool">bool</span></span><span class="token space"> </span><span class="token function">TryFindContent</span><span class="token punctuation">(</span><span class="token class-name">IPublishedRequestBuilder</span><span class="token space"> </span>request<span class="token punctuation">)</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token class-name"><span class="token keyword keyword-var">var</span></span><span class="token space"> </span>allDomains<span class="token space"> </span><span class="token operator">=</span><span class="token space"> </span>_domainService<span class="token punctuation">.</span><span class="token function">GetAll</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token class-name"><span class="token keyword keyword-var">var</span></span><span class="token space"> </span>domain<span class="token space"> </span><span class="token operator">=</span><span class="token space"> </span>allDomains<span class="token punctuation">?</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">.</span><span class="token function">FirstOrDefault</span><span class="token punctuation">(</span>f<span class="token space"> </span><span class="token operator">=&gt;</span><span class="token space"> </span>f<span class="token punctuation">.</span>DomainName<span class="token space"> </span><span class="token operator">==</span><span class="token space"> </span>request<span class="token punctuation">.</span>Uri<span class="token punctuation">.</span>Authority<span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token operator">||</span><span class="token space"> </span>f<span class="token punctuation">.</span>DomainName<span class="token space"> </span><span class="token operator">==</span><span class="token space"> </span><span class="token interpolation-string"><span class="token string">$"https://</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">request<span class="token punctuation">.</span>Uri<span class="token punctuation">.</span>Authority</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token operator">||</span><span class="token space"> </span>f<span class="token punctuation">.</span>DomainName<span class="token space"> </span><span class="token operator">==</span><span class="token space"> </span><span class="token interpolation-string"><span class="token string">$"http://</span><span class="token interpolation"><span class="token punctuation">{</span><span class="token expression language-csharp">request<span class="token punctuation">.</span>Uri<span class="token punctuation">.</span>Authority</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token class-name"><span class="token keyword keyword-var">var</span></span><span class="token space"> </span>siteId<span class="token space"> </span><span class="token operator">=</span><span class="token space"> </span>domain<span class="token space"> </span><span class="token operator">!=</span><span class="token space"> </span><span class="token keyword keyword-null">null</span><span class="token space"> </span><span class="token punctuation">?</span><span class="token space"> </span>domain<span class="token punctuation">.</span>RootContentId<span class="token space"> </span><span class="token punctuation">:</span><span class="token space"> </span>allDomains<span class="token punctuation">.</span><span class="token function">Any</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token space"> </span><span class="token punctuation">?</span><span class="token space"> </span>allDomains<span class="token punctuation">.</span><span class="token function">FirstOrDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">?.</span>RootContentId<span class="token space"> </span><span class="token punctuation">:</span><span class="token space"> </span><span class="token keyword keyword-null">null</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-if">if</span><span class="token space"> </span><span class="token punctuation">(</span><span class="token operator">!</span>_umbracoContextAccessor<span class="token punctuation">.</span><span class="token function">TryGetUmbracoContext</span><span class="token punctuation">(</span><span class="token keyword keyword-out">out</span><span class="token space"> </span><span class="token class-name"><span class="token keyword keyword-var">var</span></span><span class="token space"> </span>umbracoContext<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-return">return</span><span class="token space"> </span><span class="token boolean">false</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">}</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token class-name"><span class="token keyword keyword-var">var</span></span><span class="token space"> </span>siteRoot<span class="token space"> </span><span class="token operator">=</span><span class="token space"> </span>umbracoContext<span class="token punctuation">.</span>Content<span class="token punctuation">.</span><span class="token function">GetById</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token space"> </span>siteId<span class="token space"> </span><span class="token operator">??</span><span class="token space"> </span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-if">if</span><span class="token space"> </span><span class="token punctuation">(</span>siteRoot<span class="token space"> </span><span class="token keyword keyword-is">is</span><span class="token space"> </span><span class="token keyword keyword-null">null</span><span class="token punctuation">)</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-return">return</span><span class="token space"> </span><span class="token boolean">false</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">}</span><span class="token lf">
+</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token class-name"><span class="token keyword keyword-var">var</span></span><span class="token space"> </span>notFoundNode<span class="token space"> </span><span class="token operator">=</span><span class="token space"> </span>siteRoot<span class="token punctuation">.</span>Children<span class="token punctuation">.</span><span class="token function">FirstOrDefault</span><span class="token punctuation">(</span>f<span class="token space"> </span><span class="token operator">=&gt;</span><span class="token space"> </span>f<span class="token punctuation">.</span>ContentType<span class="token punctuation">.</span>Alias<span class="token space"> </span><span class="token operator">==</span><span class="token space"> </span>Error<span class="token punctuation">.</span>ModelTypeAlias<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-if">if</span><span class="token space"> </span><span class="token punctuation">(</span>notFoundNode<span class="token space"> </span><span class="token keyword keyword-is">is</span><span class="token space"> </span><span class="token keyword keyword-not">not</span><span class="token space"> </span><span class="token keyword keyword-null">null</span><span class="token punctuation">)</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">{</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span>request<span class="token punctuation">.</span><span class="token function">SetPublishedContent</span><span class="token punctuation">(</span>notFoundNode<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">}</span><span class="token lf">
+</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token keyword keyword-return">return</span><span class="token space"> </span>request<span class="token punctuation">.</span>PublishedContent<span class="token space"> </span><span class="token keyword keyword-is">is</span><span class="token space"> </span><span class="token keyword keyword-not">not</span><span class="token space"> </span><span class="token keyword keyword-null">null</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">}</span><span class="token lf">
+</span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token space"> </span><span class="token punctuation">}</span></code></pre><div class="toolbar"><div class="toolbar-item"><span>C#</span></div><div class="toolbar-item"><button type="button">Copy</button></div></div></div>
+<p>This implementation then needs to be set as the <code>ContentLastChanceFinder</code> using Startup.</p>
+<div class="code-toolbar"><pre class=" language-csharp"><code class=" language-csharp"><span class="token generic-method"><span class="token function">SetContentLastChanceFinder</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>PageNotFoundContentFinder<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre><div class="toolbar"><div class="toolbar-item"><span>C#</span></div><div class="toolbar-item"><button type="button">Copy</button></div></div></div>
+<p>This feature has been well documented in <a rel="noopener" href="https://our.umbraco.com/documentation/Reference/routing/request-pipeline/IContentFinder#notfoundhandlers" target="_blank" data-anchor="#notfoundhandlers">Umbraco Docs</a>. The programmatic way of setting 404 pages by customising the inbound pipeline is not a new Umbraco 9 feature, it has been there in older versions of Umbraco as well.&nbsp;</p>
+<p>From what I understand, the <code>IContentLastChanceFinder</code> implementation takes priority over the <code>Error404Collection</code>.</p>
+<p>There is also another option, the <a rel="noopener" href="https://our.umbraco.com/packages/backoffice-extensions/hot-chilli-page-not-found-manager/" target="_blank">Hot Chilli Page Not Found Manager</a> package created by the fantastic <a rel="noopener" href="https://twitter.com/HotChilliCode" target="_blank">Nik Rimington</a>. You can install the package from Nuget and start using it straight away!&nbsp;</p>
+</div></div><div class="col-100 col-s-100">
+
+
+<div class="grid-item grid-item--text ">
+    <h2>500 Error Pages</h2>
+<p>500 error pages, in my opinion, is a whole new story with .NET. It is still possible to have a <code>web.config</code> with <code>customErrors</code> section but then this ties up your application to use a Windows-based hosting environment.&nbsp;</p>
+<p>ASP.NET Core provides an exception handling middleware for custom error handling. This can be used in the <code>Startup</code> by calling the middleware and passing a error handling path which can be a static html file for your 500 errors, url to an error page in Umbraco or even a controller action. In my case, I am setting it to be a static file.&nbsp;</p>
+<div class="code-toolbar"><pre class=" language-csharp"><code class=" language-csharp">app<span class="token punctuation">.</span><span class="token function">UseExceptionHandler</span><span class="token punctuation">(</span><span class="token string">"/error.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><div class="toolbar"><div class="toolbar-item"><span>C#</span></div><div class="toolbar-item"><button type="button">Copy</button></div></div></div>
+<p>This static file must be located in the <code>wwwroot</code> folder.</p>
+<p>There is lots more to this feature that you can read about in the <a rel="noopener" href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/error-handling?view=aspnetcore-6.0&amp;WT.mc_id=DT-MVP-5004155" target="_blank" data-anchor="?view=aspnetcore-6.0&amp;WT.mc_id=DT-MVP-5004155">Microsoft Official Docs</a>.</p>
+<p>Umbraco 9 also covers us for any issues during boot up. This was a feature introduced in Umbraco 8 and is available in Umbraco 9 too. The default, pretty, boot page is available at <code>~/umbraco/views/errors/BootFailed.html</code>. However this can be customised by creating a new HTML file with the name <code>BootFailed.html</code>. This file must be in the folder <code>config/errors</code> in <code>wwwroot</code>.&nbsp;</p>
+</div></div>
+</div>      
+
+
+<div class="share">
+	<h6>Share</h6>
+	<ul class="share-list">
+		<li class="share-facebook"><a href="http://www.facebook.com/sharer.php?u=https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/" data-height="520" data-width="350" target="_blank" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+		<li class="share-twitter"><a href="http://twitter.com/share?url=https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/" data-height="240" data-width="450" target="_blank" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+		<li class="share-linkedin"><a href="https://www.linkedin.com/shareArticle?url=https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/" data-height="520" data-width="350" target="_blank" title="Linked In"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+		<li class="share-email"><a href="mailto:?body=https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/" title="Email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+	</ul>
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+<section class="block feed gray-bg">
+
+    <div class="container">
+
+        <div class="row row--center box-wrap">
+
+<div class="col-33 col-s-100">
+    <article class="box">
+<div class="box__image">
+    <a href="https://poornimanayar.co.uk/blog/treenodesrenderingnotification-in-umbraco-9/" title="TreeNodesRenderingNotification in Umbraco 9" tabindex="-1">
+        <img class="lazyautosizes lazyloaded" src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/notifications.jpg" data-sizes="auto" data-srcset="/media/mnjl3t43/notifications.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=210&amp;rnd=132805050385000000 300w,
+                                    	    /media/mnjl3t43/notifications.jpg?anchor=center&amp;mode=crop&amp;width=500&amp;height=350&amp;rnd=132805050385000000 500w,
+                                    	    /media/mnjl3t43/notifications.jpg?anchor=center&amp;mode=crop&amp;width=1000&amp;height=700&amp;rnd=132805050385000000 1000w" alt="TreeNodesRenderingNotification in Umbraco 9" sizes="393px" srcset="/media/mnjl3t43/notifications.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=210&amp;rnd=132805050385000000 300w,
+                                    	    /media/mnjl3t43/notifications.jpg?anchor=center&amp;mode=crop&amp;width=500&amp;height=350&amp;rnd=132805050385000000 500w,
+                                    	    /media/mnjl3t43/notifications.jpg?anchor=center&amp;mode=crop&amp;width=1000&amp;height=700&amp;rnd=132805050385000000 1000w">
+    </a>
+</div>        <div class="box__text">
+            <h3 class="h5"><a title="TreeNodesRenderingNotification in Umbraco 9" href="https://poornimanayar.co.uk/blog/treenodesrenderingnotification-in-umbraco-9/">TreeNodesRenderingNotification in Umbraco 9</a></h3>
+<div class="box__meta">
+     07 February 2022
+</div>            <p>TreeNodesRenderingNotification in Umbraco 9</p>
+        </div>
+    </article>
+</div>          <div class="col-33 col-s-100">
+    <article class="box">
+<div class="box__image">
+    <a href="https://poornimanayar.co.uk/blog/friendly-image-captions-using-azure-computer-vision-image-analysis-service/" title="Friendly Image Captions using Azure Computer Vision Image Analysis service" tabindex="-1">
+        <img class="lazyautosizes lazyloaded" src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/amanda-dalbjorn-ubjmy92p8wk-unsplash.jpg" data-sizes="auto" data-srcset="/media/yu1bsuuf/amanda-dalbjorn-ubjmy92p8wk-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=210&amp;rnd=132882929484470000 300w,
+                                    	    /media/yu1bsuuf/amanda-dalbjorn-ubjmy92p8wk-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=500&amp;height=350&amp;rnd=132882929484470000 500w,
+                                    	    /media/yu1bsuuf/amanda-dalbjorn-ubjmy92p8wk-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=1000&amp;height=700&amp;rnd=132882929484470000 1000w" alt="Friendly Image Captions using Azure Computer Vision Image Analysis service" sizes="393px" srcset="/media/yu1bsuuf/amanda-dalbjorn-ubjmy92p8wk-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=210&amp;rnd=132882929484470000 300w,
+                                    	    /media/yu1bsuuf/amanda-dalbjorn-ubjmy92p8wk-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=500&amp;height=350&amp;rnd=132882929484470000 500w,
+                                    	    /media/yu1bsuuf/amanda-dalbjorn-ubjmy92p8wk-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=1000&amp;height=700&amp;rnd=132882929484470000 1000w">
+    </a>
+</div>        <div class="box__text">
+            <h3 class="h5"><a title="Friendly Image Captions using Azure Computer Vision Image Analysis service" href="https://poornimanayar.co.uk/blog/friendly-image-captions-using-azure-computer-vision-image-analysis-service/">Friendly Image Captions using Azure Computer Vision Image Analysis service</a></h3>
+<div class="box__meta">
+     03 February 2022
+</div>            <p></p>
+        </div>
+    </article>
+</div>          <div class="col-33 col-s-100">
+    <article class="box">
+<div class="box__image">
+    <a href="https://poornimanayar.co.uk/blog/umbraco-9-models-builder/" title="Umbraco 9 : Models Builder" tabindex="-1">
+        <img class="lazyautosizes lazyloaded" src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/love-to-learn-tim-mossholder-we_kv_zb1l0-unsplash.jpg" data-sizes="auto" data-srcset="/media/iqoly0pr/love-to-learn-tim-mossholder-we_kv_zb1l0-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=210&amp;rnd=132882929394130000 300w,
+                                    	    /media/iqoly0pr/love-to-learn-tim-mossholder-we_kv_zb1l0-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=500&amp;height=350&amp;rnd=132882929394130000 500w,
+                                    	    /media/iqoly0pr/love-to-learn-tim-mossholder-we_kv_zb1l0-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=1000&amp;height=700&amp;rnd=132882929394130000 1000w" alt="Umbraco 9 : Models Builder" sizes="393px" srcset="/media/iqoly0pr/love-to-learn-tim-mossholder-we_kv_zb1l0-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=300&amp;height=210&amp;rnd=132882929394130000 300w,
+                                    	    /media/iqoly0pr/love-to-learn-tim-mossholder-we_kv_zb1l0-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=500&amp;height=350&amp;rnd=132882929394130000 500w,
+                                    	    /media/iqoly0pr/love-to-learn-tim-mossholder-we_kv_zb1l0-unsplash.jpg?anchor=center&amp;mode=crop&amp;width=1000&amp;height=700&amp;rnd=132882929394130000 1000w">
+    </a>
+</div>        <div class="box__text">
+            <h3 class="h5"><a title="Umbraco 9 : Models Builder" href="https://poornimanayar.co.uk/blog/umbraco-9-models-builder/">Umbraco 9 : Models Builder</a></h3>
+<div class="box__meta">
+     31 January 2022
+</div>            <p></p>
+        </div>
+    </article>
+</div>          
+        </div>
+
+    </div>
+
+<div class="text-center">
+    <div class="button-wrap">
+        <br>
+        <a href="https://poornimanayar.co.uk/blog/" class="button button--dark">Show more</a>
+    </div>
+</div>
+</section>
+
+    </main>
+
+
+
+<footer class="footer footer--dark light-color">
+
+        <div class="container container--standard footer-grid">
+            <div class="row">
+                
+                    <div class="col-50 col-s-100">
+
+
+
+
+<div class="footer-item footer-item--social-links text-center">
+
+        <h2 class="h6">Follow me</h2>
+    
+    <ul class="social-nav" itemscope="" itemtype="http://schema.org/Organization">
+        <link itemprop="url" href="https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/">
+        
+                    <li><a itemprop="sameAs" href="https://twitter.com/PoornimaNayar" target="_blank" title="Twitter" rel="noopener"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li><a itemprop="sameAs" href="https://www.linkedin.com/in/poornimanayar/" target="_blank" title="Linked In" rel="noopener"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            </ul>
+    
+</div>                        
+                    </div>
+                    <div class="col-50 col-s-100">
+
+
+
+<div class="footer-item footer-item--contact text-center">
+
+        <h2 class="h6">Contact Me</h2>
+    <address>
+        <ul class="contact-list">
+                                        <li>
+                    <a href="mailto:poornimanayar@kvtechsltd.co.uk"><i class="fa fa-envelope" aria-hidden="true"></i> poornimanayar@kvtechsltd.co.uk</a>
+                </li>
+        </ul>
+    </address>
+
+</div>                        
+                    </div>
+                    <div class="col-100 col-s-100">
+
+
+
+
+<div class="footer-item footer-item--text text-center">
+
+    <div>
+        <p>Made with love using <a rel="noopener" href="https://umbraco.com/" target="_blank">Umbraco</a> and <a rel="noopener" href="https://iglootheme.com/" target="_blank" title="Igloo Theme">Igloo Theme</a></p>
+    </div>
+    
+</div>                        
+                    </div>
+                
+            </div>
+        </div>
+
+    
+    <a href="https://www.iglootheme.com/" target="_blank" rel="noopener" class="igloo-symbol" title="Powered by Igloo" aria-label="Powered by Igloo" tabindex="-1">
+		<svg width="26px" height="14px" viewBox="0 0 26 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="igloo_symbol" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M1.3109849,13.1780822 C1.3109849,6.63398364 6.54433521,1.3289436 13,1.3289436 C19.4556648,1.3289436 24.6890151,6.63398364 24.6890151,13.1780822 L26,13.1780822 C26,5.90002836 20.1797017,4.45652266e-16 13,0 C5.82029824,-4.45652266e-16 8.79259875e-16,5.90002836 0,13.1780822 L1.3109849,13.1780822 Z"></path>
+                    <path d="M5.87840007,13.1780822 C5.87840012,9.15559265 9.1079176,5.89472064 13.0917293,5.89472064 C17.0755409,5.89472064 20.3050584,9.15559265 20.3050585,13.1780822 L22.260274,13.1780822 C22.2602738,8.06377407 18.154173,3.91780822 13.0890411,3.91780822 C8.02390909,3.91780822 3.9178083,8.06377407 3.91780822,13.1780822 L5.87840007,13.1780822 Z"></path>
+                    <path d="M13.1780822,8.01369863 C10.3258719,8.01369863 8.01369863,10.3258719 8.01369863,13.1780822 L18.3424658,13.1780822 C18.3424658,10.3258719 16.0302925,8.01369863 13.1780822,8.01369863 Z"></path>
+                </g>
+            </g>
+        </svg>
+	</a>
+	
+</footer>
+
+<button title="Scroll to top" aria-label="Scroll to top" class="to-top to-top--theme-alt">
+    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+</button> 
+
+    <div class="search" role="dialog" arial-label="Search">
+    
+    	<div class="search__stage">
+    
+            <form action="https://poornimanayar.co.uk/search/" class="search__form">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" autocomplete="off" name="search" required="" class="search__input" placeholder="Search the site..">
+                <div class="search__loader"></div>
+
+                <div class="search__autocomplete hide">
+
+                    <div class="search__no-results hide">
+                        No results found
+                    </div>
+
+                    <ul class="search__suggest">
+                    </ul>
+                    <button class="button button--block">Show all results <span class="search__result-count"></span></button>
+                </div>
+            </form>
+    	</div>
+    	
+    	<button class="search__close" title="Close (Esc)" tabindex="0"><i class="fa fa-times" aria-hidden="true"></i></button>
+    
+    </div>
+    <button class="search-overlay"></button>
+
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+ 
+       <div class="pswp__container">
+           <div class="pswp__item"></div>
+           <div class="pswp__item"></div>
+           <div class="pswp__item"></div>
+        </div>
+ 
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (left arrow)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (right arrow)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "https://poornimanayar.co.uk/"
+            ,"name": "Poornima Nayar - Freelance Developer"
+        
+        }
+    </script>
+
+    <script src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/DependencyHandler(1).axd" type="text/javascript"></script>
+    
+    <script type="application/ld+json">
+        {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://poornimanayar.co.uk/blog/friendly-error-pages-in-umbraco-9/"
+        },
+        "headline": "Friendly Error Pages in Umbraco 9",
+        "image": [
+        "https://poornimanayar.co.uk/media/3k4fd3ml/cat.jpg"
+        ],
+        "datePublished": "2/16/2022 12:00:00 PM",
+        "dateModified": "2/17/2022 9:37:29 AM",
+        "author": {
+        "@type": "Organization",
+        "name": "Poornima Nayar - Freelance Developer"
+        },
+        "publisher": {
+        "@type": "Organization",
+        "name": "Poornima Nayar - Freelance Developer",
+        "logo": {
+            "@type": "ImageObject",
+            "url": ""
+        }
+        },
+        "description": ""
+        }
+    </script>
+
+
+
+
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLW9HM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+    <script async="" src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/custom.js.download"></script>
+	<script src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/uMarketingSuite.analytics.js.download"></script>
+    <script src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/uMarketingSuite.analytics.ga-bridge.js.download"></script>
+    <script src="./Friendly Error Pages in Umbraco 9 _ Poornima Nayar - Freelance Developer_files/uMarketingSuite.analytics.blockerdetection.js.download"></script>
+
+<script>typeof uMarketingSuite!=="undefined"&&uMarketingSuite.analytics&&uMarketingSuite.analytics.init("a30148ea-0565-4455-98f4-07c99b4e4197")</script>
