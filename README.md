@@ -32,7 +32,7 @@ Projects structured as follows
 Default Back Office user is:
 
 * Email: uadmin@phases.dk
-* Password: 0123456789
+* Password: 1234567890
 
 
 
