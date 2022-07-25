@@ -8,14 +8,65 @@
 This project is used for the references for Umbraco version 10 projects.
 
 
-Projects structured as follows
 
-* Umbraco Project Snippets.Web
-* Umbraco Project Snippets.Core
-* Umbraco Project Snippets.Models
-* Umbraco Project Snippets.DI
-* Umbraco Project Snippets.Utils
-* Umbraco Project Snippets.Repository
+### Contents:
+  - [Project Structure](#project-structured)
+      - [.Web 🌐](#umbraco-project-snippetsweb)
+      - [.Web 🌐](#umbraco-project-snippetsweb)
+      - [.Web 🌐](#umbraco-project-snippetsweb)
+      - [.Web 🌐](#umbraco-project-snippetsweb)
+      - [.Web 🌐](#umbraco-project-snippetsweb)
+      - [.Web 🌐](#umbraco-project-snippetsweb)
+      - [.Web 🌐](#umbraco-project-snippetsweb)
+      - [.Web 🌐](#umbraco-project-snippetsweb)
+  - [Tools](#tools)
+  - [Articles](#articles)
+  - [Video Tutorials](#tutorials)
+  - [Contribute](#contribute)
+  - [License](#license)
+
+
+
+
+
+## Project structured
+
+
+#### Umbraco Project Snippets.Web
+
+   *  Main project ,created as webproject.
+   *  Contains Media,wwroot files,appsettings etc..
+
+#### Umbraco Project Snippets.Core
+
+   * Class project for creating controllers,services etc..
+
+#### Umbraco Project Snippets.Models
+
+   * Class librray for Differnt types of Models
+       * Page Types / Doctype Models
+       * View Models etc..
+
+
+<h6>(Optional)</h6>
+
+#### Umbraco Project Snippets.DI
+
+   *  Class project for Dependecny Injection.
+   *  Preffered for the applications have more services to inject.
+
+#### Umbraco Project Snippets.Utils
+
+   *  Class project for Utility classes.
+      * Extension Methods
+      * Utility classes etc..
+
+#### Umbraco Project Snippets.Repository
+
+   *  Class project for Database Operations.
+       * Understand the scope while injecting the DB related services
+
+<p style="color:blue;">Recommending to add more Class Projects as per the Requirements</p>
 
 
 
