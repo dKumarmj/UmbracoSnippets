@@ -1,9 +1,5 @@
-# UmbracoSnippets
 
-
-This is some useful Umbraco code, this may help
-
-
+<h1 align="center">Phases</h3>
 
 
 
@@ -21,7 +17,6 @@ Projects structured as follows
 * Umbraco Project Snippets.Utils
 * Umbraco Project Snippets.Repository
 
-<h3 align="center">Phases</h3>
 
 
 
