@@ -1,0 +1,14 @@
+
+@using Newtonsoft.Json;
+@using System.Dynamic;
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = null;
+    Response.ContentType = "application/json";
+    dynamic exObj = new ExpandoObject();
+    var dictionary = exObj as IDictionary<string, object>;
+    Model.Content.Properties.ForEach(p => dictionary[p.PropertyTypeAlias] = p.Value);
+}
+@Html.Raw(JsonConvert.SerializeObject(exObj))
+
+//need to explore moew, for reference nodes
