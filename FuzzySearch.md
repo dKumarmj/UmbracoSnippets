@@ -4,7 +4,7 @@ https://shazwazza.github.io/Examine/searching.html
 FUZZY SEARCH
 ==================================
 
-
+```
 var toSearchForm = searchTerm.Split(' ');
 
                 var searcher = ExamineManager.Instance.SearchProviderCollection["SiteQuickSearchSearcher"];
@@ -32,5 +32,6 @@ var toSearchForm = searchTerm.Split(' ');
                                                                             select new Node(r.Id));
                 }
 
+```
 
 Search Reference :: https://skrift.io/issues/examine-in-umbraco-8/
