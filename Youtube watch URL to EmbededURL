@@ -1,8 +1,0 @@
-const string input = "https://player.vimeo.com/video/253989945/config?autopause=1&byline=0&collections=1&context=Vimeo%5CController%5CClipController.main&default_to_hd=1&outro=nothing&portrait=0&share=1&title=0&watch_trailer=0&s=a3b8b2a0e208abfc9f3a87abd73fc31ddd353ea5_1608213640";
-const string pattern = @"(?:https?:\/\/)?(?:www\.)?(?:(?:(?:youtube.com\/watch\?[^?]*v=|youtu.be\/)([\w\-]+))(?:[^\s?]+)?)";
-const string replacement = "http://www.youtube.com/embed/$1";
-
-var rgx = new Regex(pattern);
-var result = rgx.Replace(input, replacement);
-		Console.WriteLine(result);
-		
