@@ -2,6 +2,8 @@ https://github.com/JimBobSquarePants/ImageProcessor/blob/1c65565c7f42fa5e9917fbe
 
 
 
+```
+
 using System.Web;
 
 [assembly: PreApplicationStartMethod(typeof(ImageProcessor.Web.Plugins.PostProcessor.PostProcessorApplicationEvents), "Start")]
@@ -53,3 +55,4 @@ namespace ImageProcessor.Web.Plugins.PostProcessor
 		}
 	}
 }
+```
