@@ -1,0 +1,45 @@
+1️⃣ First, confirm what actually exists locally
+git branch
+
+
+If you renamed locally using:
+
+git branch -m old-name new-name
+
+
+that only renames the local branch.
+
+2️⃣ Check what exists on remote
+git branch -r
+
+
+You’ll probably still see:
+
+origin/old-name
+
+
+and not origin/new-name.
+
+3️⃣ Push the renamed branch (this is the missing step)
+git push origin new-name
+
+4️⃣ Delete the old remote branch (important)
+git push origin --delete old-name
+
+5️⃣ Fix upstream tracking (people often forget this)
+git branch --unset-upstream
+git branch --set-upstream-to=origin/new-name
+
+
+or in one shot:
+
+git push --set-upstream origin new-name
+
+6️⃣ If it still doesn’t reflect
+
+Run:
+
+git fetch --prune
+
+
+This clears stale remote refs
